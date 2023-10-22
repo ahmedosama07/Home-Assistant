@@ -6,7 +6,8 @@
        #define NODEBUG_WEBSOCKETS
        #define NDEBUG
 #endif 
-
+#define FORMAT 23
+#include "WiFiManager.h"
 #include <Arduino.h>
 #include <WiFi.h>
 #include <SinricPro.h>
@@ -14,8 +15,6 @@
 
 #include <map>
 
-#define WIFI_SSID         "Osama"    
-#define WIFI_PASS         "3.14PiPythonCommHam"
 #define APP_KEY           "9272ed7f-f035-4058-ad92-3a97251d709e"      // Should look like "de0bxxxx-1x3x-4x3x-ax2x-5dabxxxxxxxx"
 #define APP_SECRET        "dca402bc-84df-4aba-855a-12cd8ba659ab-a6a7b2d5-41e2-4d42-8862-89df89ddb456"   // Should look like "5f36xxxx-x3x7-4x3x-xexe-e86724a9xxxx-4c4axxxx-3x3x-x5xe-x9x3-333d65xxxxxx"
 
@@ -38,6 +37,8 @@
 #define BAUD_RATE   9600
 
 #define DEBOUNCE_TIME 250
+
+WiFiManager wm;
 
 typedef struct {      // struct for the std::map below
   int relayPIN;
@@ -124,16 +125,24 @@ void handleFlipSwitches() {
 
 void setupWiFi()
 {
-  Serial.printf("\r\n[Wifi]: Connecting");
-  WiFi.begin(WIFI_SSID, WIFI_PASS);
+  pinMode(FORMAT, INPUT_PULLUP);
+  wm.setDebugOutput(3);
+  
 
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    Serial.printf(".");
-    delay(250);
+  if (!wm.autoConnect()) {
+    Serial.println("failed to connect and hit timeout");
+    //reset and try again, or maybe put it to deep sleep
+    ESP.restart();
+    delay(1000);
   }
-  digitalWrite(wifiLed, LOW);
-  Serial.printf("connected!\r\n[WiFi]: IP-Address is %s\r\n", WiFi.localIP().toString().c_str());
+  
+  Serial.println("");
+  Serial.print("Connected to ");
+  Serial.println(wm.getSSID());
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+  wm.setConfigPortalBlocking(false);
+  wm.startWebPortal();
 }
 
 void setupSinricPro()
@@ -164,6 +173,12 @@ void setup()
 
 void loop()
 {
+  wm.process();
+  if(digitalRead(FORMAT)==LOW){
+    Serial.println("Resetting configuration");
+    wm.resetSettings();
+    ESP.restart();
+  } 
   SinricPro.handle();
   handleFlipSwitches();
 }

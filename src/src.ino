@@ -101,6 +101,7 @@ void handleFlipSwitches() {
       int flipSwitchPIN = flipSwitch.first;                                       // get the switch pin from configuration
       bool lastFlipSwitchState = flipSwitch.second.lastFlipSwitchState;           // get last state
       bool flipSwitchState = digitalRead(flipSwitchPIN);                          // read the current state
+      if (flipSwitchState != lastFlipSwitchState) { 
 #ifdef TACTILE_BUTTON
         if (flipSwitchState) {                                                    // handle tactile button
 #endif      

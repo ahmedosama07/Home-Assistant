@@ -19,9 +19,9 @@ DHT dht(DHTPIN, DHTTYPE);
 #define RelayPin2 13 
 #define RelayPin3 14 
 
-#define SwitchPin1 5
-#define SwitchPin2 4
-#define SwitchPin3 3
+#define SwitchPin1 18
+#define SwitchPin2 19
+#define SwitchPin3 21
 
 
 #define wifiLed   2

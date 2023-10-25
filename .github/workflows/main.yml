@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: arduino/compile-sketches@v3
-      - uses: ArminJo/arduino-test-compile@v3
+      - uses: ArminJo/arduino-test-compile@v1
         with:
           arduino-board-fqbn: esp32:esp32:featheresp32:FlashFreq=80
           platform-url: https://dl.espressif.com/dl/package_esp32_index.json

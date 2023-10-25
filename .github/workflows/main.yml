@@ -1,0 +1,18 @@
+on:
+  - push
+  - pull_request
+
+jobs:
+  compile-sketch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: arduino/compile-sketches@v1
+        with:
+          sketch-paths: |
+            - src
+            - V2/sinric
+          libraries: |
+            - name: DHT sensor library
+            - name: Blynk
+            - name: SinricPro

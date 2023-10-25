@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="mm"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -3135,6 +3135,16 @@ Added bigger pads to the TO-92 package</description>
 <wire x1="43.18" y1="134.62" x2="43.18" y2="124.46" width="0.1524" layer="91" grouprefs="POWER"/>
 <wire x1="43.18" y1="124.46" x2="38.1" y2="124.46" width="0.1524" layer="91" grouprefs="POWER"/>
 <junction x="38.1" y="124.46" grouprefs="POWER"/>
+<pinref part="D6" gate="G$1" pin="A"/>
+<pinref part="D5" gate="G$1" pin="C"/>
+<wire x1="76.2" y1="119.38" x2="68.58" y2="119.38" width="0.1524" layer="91" grouprefs="POWER"/>
+<wire x1="68.58" y1="119.38" x2="60.96" y2="119.38" width="0.1524" layer="91" grouprefs="POWER"/>
+<wire x1="48.26" y1="114.3" x2="68.58" y2="114.3" width="0.1524" layer="91" grouprefs="POWER"/>
+<wire x1="68.58" y1="114.3" x2="68.58" y2="119.38" width="0.1524" layer="91" grouprefs="POWER"/>
+<junction x="68.58" y="119.38" grouprefs="POWER"/>
+<wire x1="43.18" y1="124.46" x2="48.26" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="124.46" x2="48.26" y2="114.3" width="0.1524" layer="91"/>
+<junction x="43.18" y="124.46"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -3149,20 +3159,10 @@ Added bigger pads to the TO-92 package</description>
 <wire x1="68.58" y1="139.7" x2="76.2" y2="139.7" width="0.1524" layer="91" grouprefs="POWER"/>
 <wire x1="68.58" y1="144.78" x2="68.58" y2="139.7" width="0.1524" layer="91" grouprefs="POWER"/>
 <junction x="68.58" y="139.7" grouprefs="POWER"/>
-</segment>
-</net>
-<net name="N$10" class="0">
-<segment>
+<wire x1="48.26" y1="139.7" x2="48.26" y2="127" width="0.1524" layer="91"/>
+<junction x="48.26" y="139.7"/>
 <pinref part="J1" gate="G$1" pin="1"/>
-<wire x1="38.1" y1="127" x2="48.26" y2="127" width="0.1524" layer="91" grouprefs="POWER"/>
-<wire x1="48.26" y1="127" x2="48.26" y2="114.3" width="0.1524" layer="91" grouprefs="POWER"/>
-<pinref part="D6" gate="G$1" pin="A"/>
-<pinref part="D5" gate="G$1" pin="C"/>
-<wire x1="76.2" y1="119.38" x2="68.58" y2="119.38" width="0.1524" layer="91" grouprefs="POWER"/>
-<wire x1="68.58" y1="119.38" x2="60.96" y2="119.38" width="0.1524" layer="91" grouprefs="POWER"/>
-<wire x1="48.26" y1="114.3" x2="68.58" y2="114.3" width="0.1524" layer="91" grouprefs="POWER"/>
-<wire x1="68.58" y1="114.3" x2="68.58" y2="119.38" width="0.1524" layer="91" grouprefs="POWER"/>
-<junction x="68.58" y="119.38" grouprefs="POWER"/>
+<wire x1="48.26" y1="127" x2="38.1" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$13" class="0">

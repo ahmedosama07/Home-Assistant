@@ -1,0 +1,14 @@
+on:
+  - push
+  - pull_request
+
+jobs:
+  compile-sketch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ArminJo/arduino-test-compile@v3
+        with:
+          arduino-board-fqbn: esp32:esp32:esp32doit-devkit-v1:FlashFreq=80
+          platform-url: https://dl.espressif.com/dl/package_esp32_index.json
+          required-libraries: DHT sensor library,Blynk,SinricPro

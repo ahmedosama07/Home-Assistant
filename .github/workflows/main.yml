@@ -10,7 +10,7 @@ jobs:
       - uses: arduino/compile-sketches@v3
       - uses: ArminJo/arduino-test-compile@v3
         with:
-          arduino-board-fqbn: esp32:esp32:doit esp32 devhit v1:xtal=80
+          arduino-board-fqbn: esp32:esp32:featheresp32:FlashFreq=80
           platform-url: https://dl.espressif.com/dl/package_esp32_index.json
           sketch-paths: |
             - src

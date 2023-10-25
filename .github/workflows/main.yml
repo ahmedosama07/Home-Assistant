@@ -14,7 +14,4 @@ jobs:
           sketch-paths: |
             - src
             - V2/sinric
-          libraries: |
-            - name: DHT sensor library
-            - name: Blynk
-            - name: SinricPro
+          required-libraries: DHT sensor library, Blynk, SinricPro
